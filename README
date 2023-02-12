@@ -1,0 +1,10 @@
+The script is installed on the same server where the SOLANA node is deployed and, if the node is in the "delinquent" state, reports it to the specified telegram channel of the client. To do this you need  to find out your Telegram ID and replacing XXX XXX with it in the text of the delinq.sh script. And add to telegram sendmess_delinq_bot.
+The script serves only one node in which it is located. 
+The script consists of 2 parts: delinq.sh and sendmess_delinq.sh.
+Both scripts are installed in the same directory, for example solana, and made executable.
+The script is designed as a service and runs on a timer. The delinq.service and delinq.timer files are placed in the /etc/systemd/system/ folder.
+The default check frequency set in delinq.timer is 5 min.
+To start the script, you need to execute the commands
+sudo systemctl enable delinq.timer
+sudo systemctl enable delinq.service
+sudo systemctl start delinq.timer

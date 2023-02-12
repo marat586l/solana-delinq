@@ -1,0 +1,9 @@
+[Unit]
+Description=timer for delinq script 
+ 
+[Timer]
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target
+

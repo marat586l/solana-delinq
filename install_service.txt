@@ -1,0 +1,21 @@
+tee /etc/systemd/system/delinq.service > /dev/null <<EOF
+[Unit]
+Description=Check and add the funds from voute to identity
+[Service]
+Type=simple
+WorkingDirectory=/root/solana
+ExecStart='/root/solana/delinq.sh'
+User=root
+TimeoutStopSec=5
+[Install]
+WantedBy=multi-user.target  
+EOF
+
+tee /etc/systemd/system/delinq.timer > /dev/null <<EOF
+[Unit]
+Description=timer for delinq script  
+[Timer]
+OnUnitActiveSec=5min
+[Install]
+WantedBy=timers.target
+EOF
